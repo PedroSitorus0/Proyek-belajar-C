@@ -1,0 +1,12 @@
+# Compiled output
+*.o
+*.out
+math          # nama program hasil kompilasi Anda (sesuaikan)
+a.out
+
+# VSCode settings
+.vscode/
+
+# Backup files
+*~
+*.swp
