@@ -7,7 +7,6 @@ void hello(char name[50], int age) {
     printf("your age is %d\n", age);
     printf("I hate you!!!\n");
 }
-
 int main (int *argv[]) {
 
     int yep = 0;
