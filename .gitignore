@@ -1,7 +1,7 @@
 # Compiled output
 *.o
 *.out
-math          # nama program hasil kompilasi Anda (sesuaikan)
+math          
 a.out
 
 # VSCode settings
