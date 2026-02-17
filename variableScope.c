@@ -17,7 +17,7 @@ int main() {
     }
     
     
-    return yep;
+    return 0;
 }
 
 void yeah(char name[], int age) {
