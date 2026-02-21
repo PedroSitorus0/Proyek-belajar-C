@@ -94,7 +94,7 @@ int main() {
     // TAMPILKAN TOTAL AKHIR
     // ====================================================
     printf("\n========== STRUK PEMBELIAN ==========\n");
-    printf("Total yang harus dibayar:%c%d\n", currency,totalKeseluruhan);
+    printf("Total yang harus dibayar:%s%d\n", currency,totalKeseluruhan);
     printf("Terima kasih telah memesan!\n");
     printf("======================================\n");
 

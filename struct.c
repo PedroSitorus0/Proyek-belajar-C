@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
+
 
 typedef struct 
 {
@@ -9,16 +11,32 @@ typedef struct
     float gpa;
     bool isFullTime;
 }Student;
-
+void printStudent(Student student);
 
 int main(void) {
 
     Student student1 = {"Pedro Armando Sitorus", 18, 2261354, 4.0, true};
-    
-    printf("%s\n", student1.name);
-    printf("%d\n", student1.age);
-    printf("%d\n", student1.ID);
-    printf("%.2f\n", student1.gpa);
-    printf("%i\n", student1.isFullTime);
+    Student student2 = {"Abdul", 18, 226324423, 3.3,true};
+    Student student3 ={0};
+
+    strncpy(student3.name, "Ikan", 5);
+    // printf("%s", student3.name);
+    // printf("\n");
+    printStudent(student1);
+    printStudent(student2);
+    printStudent(student3);
     return 0;
+}
+
+
+
+void printStudent(Student student) {
+    printf("%s\n", student.name);
+    printf("%d\n", student.age);
+    printf("%d\n", student.ID);
+    printf("%.2f\n", student.gpa);
+    printf("%s\n", (student.isFullTime) ? "Aktif" : "Tidak Aktif");
+    printf("\n");
+
+
 }
