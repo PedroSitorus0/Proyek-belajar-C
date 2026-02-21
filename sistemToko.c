@@ -71,7 +71,7 @@ int main() {
                             Barang *b = &daftarBarang[jumlahBarang];
                             b->id = nextId++;
                             printf("Masukkan nama barang: ");
-                            scanf("%s", b->nama); // sederhana, tanpa spasi
+                            scanf("%s", b->nama); 
                             printf("Masukkan harga barang: ");
                             scanf("%d", &b->harga);
                             printf("Masukkan stok barang: ");
