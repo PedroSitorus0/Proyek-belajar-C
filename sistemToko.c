@@ -21,58 +21,12 @@ typedef struct {
     int totalHarga;
 } ItemKeranjang;
 
-void clearScreen() {
-    system("clear"); // untuk Windows, ganti "clear" jika Linux/Mac
-}
 
-// Fungsi untuk menampilkan daftar barang
-void tampilBarang(Barang *daftarBarang, int jumlahBarang) {
-    if (jumlahBarang == 0) {
-        printf("Belum ada barang.\n");
-        return;
-    }
-    printf("\nDaftar Barang:\n");
-    printf("ID\tNama\t\tHarga\tStok\n");
-    for (int i = 0; i < jumlahBarang; i++) {
-        printf("%d\t%s\t\t%d\t%d\n", daftarBarang[i].id, daftarBarang[i].nama, daftarBarang[i].harga, daftarBarang[i].stok);
-    }
-}
+void clearScreen();
+void tampilBarang(Barang *daftarBarang, int jumlahBarang);
+int cariBarang(Barang *daftarBarang, int jumlahBarang, int id);
+void simpanStruk(ItemKeranjang *keranjang, int jumlahItem, int totalBayar);
 
-
-int cariBarang(Barang *daftarBarang, int jumlahBarang, int id) {
-    for (int i = 0; i < jumlahBarang; i++) {
-        if (daftarBarang[i].id == id) return i;
-    }
-    return -1;
-}
-
-void simpanStruk(ItemKeranjang *keranjang, int jumlahItem, int totalBayar) {
-    FILE *file = fopen("struk.txt", "a"); // append ke file struk.txt
-    if (file == NULL) {
-        printf("Gagal membuka file untuk menyimpan struk.\n");
-        return;
-    }
-
-    // Mendapatkan waktu sekarang (sederhana)
-    time_t now = time(NULL);
-    struct tm *t = localtime(&now);
-
-    fprintf(file, "\n========== STRUK PEMBELIAN ==========\n");
-    fprintf(file, "Tanggal: %02d-%02d-%d %02d:%02d:%02d\n",
-            t->tm_mday, t->tm_mon+1, t->tm_year+1900,
-            t->tm_hour, t->tm_min, t->tm_sec);
-    fprintf(file, "--------------------------------------\n");
-    fprintf(file, "Nama Barang\tQty\tHarga\tTotal\n");
-    for (int i = 0; i < jumlahItem; i++) {
-        fprintf(file, "%s\t%d\t%d\t%d\n", keranjang[i].namaBarang,
-                keranjang[i].jumlah, keranjang[i].hargaSatuan, keranjang[i].totalHarga);
-    }
-    fprintf(file, "--------------------------------------\n");
-    fprintf(file, "TOTAL BAYAR: %d\n", totalBayar);
-    fprintf(file, "======================================\n\n");
-    fclose(file);
-    printf("Struk berhasil disimpan ke file struk.txt\n");
-}
 
 int main() {
     Barang *daftarBarang = NULL; // pointer ke array barang
@@ -289,4 +243,57 @@ int main() {
     free(daftarBarang);
     free(keranjang);
     return 0;
+}
+
+void clearScreen() {
+    system("clear"); // untuk Windows, ganti "clear" jika Linux/Mac
+}
+
+// Fungsi untuk menampilkan daftar barang
+void tampilBarang(Barang *daftarBarang, int jumlahBarang) {
+    if (jumlahBarang == 0) {
+        printf("Belum ada barang.\n");
+        return;
+    }
+    printf("\nDaftar Barang:\n");
+    printf("ID\tNama\t\tHarga\tStok\n");
+    for (int i = 0; i < jumlahBarang; i++) {
+        printf("%d\t%s\t\t%d\t%d\n", daftarBarang[i].id, daftarBarang[i].nama, daftarBarang[i].harga, daftarBarang[i].stok);
+    }
+}
+
+
+int cariBarang(Barang *daftarBarang, int jumlahBarang, int id) {
+    for (int i = 0; i < jumlahBarang; i++) {
+        if (daftarBarang[i].id == id) return i;
+    }
+    return -1;
+}
+
+void simpanStruk(ItemKeranjang *keranjang, int jumlahItem, int totalBayar) {
+    FILE *file = fopen("struk.txt", "a"); // append ke file struk.txt
+    if (file == NULL) {
+        printf("Gagal membuka file untuk menyimpan struk.\n");
+        return;
+    }
+
+    // Mendapatkan waktu sekarang (sederhana)
+    time_t now = time(NULL);
+    struct tm *t = localtime(&now);
+
+    fprintf(file, "\n========== STRUK PEMBELIAN ==========\n");
+    fprintf(file, "Tanggal: %02d-%02d-%d %02d:%02d:%02d\n",
+            t->tm_mday, t->tm_mon+1, t->tm_year+1900,
+            t->tm_hour, t->tm_min, t->tm_sec);
+    fprintf(file, "--------------------------------------\n");
+    fprintf(file, "Nama Barang\tQty\tHarga\tTotal\n");
+    for (int i = 0; i < jumlahItem; i++) {
+        fprintf(file, "%s\t%d\t%d\t%d\n", keranjang[i].namaBarang,
+                keranjang[i].jumlah, keranjang[i].hargaSatuan, keranjang[i].totalHarga);
+    }
+    fprintf(file, "--------------------------------------\n");
+    fprintf(file, "TOTAL BAYAR: %d\n", totalBayar);
+    fprintf(file, "======================================\n\n");
+    fclose(file);
+    printf("Struk berhasil disimpan ke file struk.txt\n");
 }
