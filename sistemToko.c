@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include <string.h>
-
+#include <complex.h>
 
 typedef struct {
     int id;
