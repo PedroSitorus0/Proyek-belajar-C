@@ -48,7 +48,5 @@ int main () {
 
     printf("Result: %.0lf\n", result);
 
-
-
     return yep;
 }   
